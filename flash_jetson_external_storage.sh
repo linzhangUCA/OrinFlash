@@ -2,7 +2,7 @@
 #MIT License
 #Copyright (c) 2021-23 Jetsonhacks
 
-JETSON_FOLDER=R35.4.1
+JETSON_FOLDER=R35.5.0
 LINUX_FOR_TEGRA_DIRECTORY="$JETSON_FOLDER/Linux_for_Tegra"
 
 
@@ -16,8 +16,8 @@ declare -a device_names=(
     "jetson-agx-xavier-industrial"
     "jetson-orin-nano-devkit"
     "jetson-xavier-nx-devkit"
-    "jetson-xavier-nx-devkit-emmc"    
-  
+    "jetson-xavier-nx-devkit-emmc"
+
 )
 
 # In a shell script, 0 is success (True)
@@ -67,7 +67,7 @@ if [ -f /etc/os-release ]; then
          exit
        ;;
     esac
-    
+
   else
     if [ $(arch) == 'aarch64' ]; then
       echo 'This script must be run from a x86 host machine'
@@ -102,14 +102,14 @@ function check_board_setup
   echo $PWD
   # Check to see if we can see the Jetson
   echo "Checking Jetson ..."
-  
- 
+
+
 
   FLASH_BOARDID=$(sudo ./nvautoflash.sh --print_boardid)
   if [ $? -eq 1 ] ; then
     # There was an error with the Jetson connected
     # It may not be detectable, be in force recovery mode
-    # Or there may be more than one Jetson in FRM 
+    # Or there may be more than one Jetson in FRM
     echo "$FLASH_BOARDID" | grep Error
     echo "Make sure that your Jetson is connected through"
     echo "a USB port and in Force Recovery Mode"
@@ -160,9 +160,9 @@ function check_python_install
       # The NV scripts are for Python 2
       sudo apt install python-is-python3
       SCRIPT_SET_PYTHON=true
-    fi 
+    fi
   fi
-} 
+}
 
 # Made it this far, we're ready to start the flashy bit
 # Before we flash, we need to shutdown the udisks2 service
@@ -197,7 +197,7 @@ function flash_jetson
   fi
   # Turn off USB mass storage during flashing
   sudo systemctl stop udisks2.service
-  
+
   # Now do the heavy lifting and flash the Jetson
   echo "Flashing to $storage"
   echo $storage
@@ -214,7 +214,7 @@ storage_arg="nvme0n1p1"
 if [ "$1" == "" ]; then
   flash_jetson "${storage_arg}"
   exit 0
-fi 
+fi
 
 while [ "$1" != "" ];
 do
