@@ -24,19 +24,19 @@ fi
 # Now install the packages
 sudo apt update
 sudo apt-get install \
- nvidia-jetpack \
- python3-vpi1 \
- python3-libnvinfer-dev \
- python2.7-dev \
- python-dev \
- python-py \
- python-attr \
- python-funcsigs \
- python-pluggy \
- python-pytest \
- python-six \
- uff-converter-tf \
- libtbb-dev
+  nvidia-jetpack \
+  python3-vpi1 \
+  python3-libnvinfer-dev \
+  python2.7-dev \
+  python-dev \
+  python-py \
+  python-attr \
+  python-funcsigs \
+  python-pluggy \
+  python-pytest \
+  python-six \
+  uff-converter-tf \
+  libtbb-dev
 
 # nvidia-jetpack installs these packages:
 # nvidia-cuda
@@ -47,5 +47,3 @@ sudo apt-get install \
 # nvidia-container
 # nvidia-vpi
 # nvidia-l4t-jetson-multimedia-api
-
-
